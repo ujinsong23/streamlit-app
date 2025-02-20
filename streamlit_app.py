@@ -10,7 +10,7 @@ upload_folder_dict = {
 
 if __name__ == "__main__":
     """
-    streamlit run streamlit_push.py 
+    streamlit run streamlit_app.py 
     """
 
     model_names = list(upload_folder_dict.keys())
