@@ -3,8 +3,8 @@ import os
 
 
 upload_folder_dict = {
-    "3s-m1-4000step": "/home/yusu/new_home/code/y/generations/3sec/m1_newtest/step-4000",
-    "3s-mamba-4000step": "/home/yusu/new_home/code/y/generations/3sec/mamba2_newtest/step-4000",
+    "3s-m1-4000step": "videos/3sec/m1_newtest/step-4000",
+    "3s-mamba-4000step": "videos/3sec/mamba2_newtest/step-4000",
 
 }
 
