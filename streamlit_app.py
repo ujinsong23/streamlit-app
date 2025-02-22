@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import re
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 OPTIONS = [
         {
@@ -20,6 +20,17 @@ OPTIONS = [
             "step": 2400,
             "video_length": 9,
             "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+        },
+        {
+            "models": {
+                "mamba": "videos/3sec/mamba2_newtest/step-8000",
+                "attn": "videos/3sec/attn_newtest/step-8000",
+                "m1": "videos/3sec/m1_newtest/step-8000",
+                # "m2": "videos/3sec/m2_newtest/step-8000"
+            },
+            "step": 8000,
+            "video_length": 3,
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters"
         },
         {
             "models": {
