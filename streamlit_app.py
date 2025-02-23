@@ -53,40 +53,40 @@ OPTIONS = [
             "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters",
             "prompt_type": "test"
         },
-        {
-            "models": {
-                "mamba": "videos/3sec/mamba2_newtest/step-6000",
-                "attn": "videos/3sec/attn_newtest/step-6000",
-                "m1": "videos/3sec/m1_newtest/step-6000",
-                "m2": "videos/3sec/m2_newtest/step-6000"
-            },
-            "step": 6000,
-            "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters",
-            "prompt_type": "test"
-        },
-        {
-            "models": {
-                "mamba": "videos/3sec/mamba2_newtest/step-4000",
-                "attn": "videos/3sec/attn_newtest/step-4000",
-                "m1": "videos/3sec/m1_newtest/step-4000",
-                "m2": "videos/3sec/m2_newtest/step-4000"
-            },
-            "step": 4000,
-            "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
-            "prompt_type": "test"
-        },
-        {
-            "models": {
-                "mamba": "videos/3sec/mamba2_newtest/step-2500",
-                "m2": "videos/3sec/m2_newtest/step-2500"
-            },
-            "step": 2500,
-            "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
-            "prompt_type": "test"
-        }
+        # {
+        #     "models": {
+        #         "mamba": "videos/3sec/mamba2_newtest/step-6000",
+        #         "attn": "videos/3sec/attn_newtest/step-6000",
+        #         "m1": "videos/3sec/m1_newtest/step-6000",
+        #         "m2": "videos/3sec/m2_newtest/step-6000"
+        #     },
+        #     "step": 6000,
+        #     "video_length": 3,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters",
+        #     "prompt_type": "test"
+        # },
+        # {
+        #     "models": {
+        #         "mamba": "videos/3sec/mamba2_newtest/step-4000",
+        #         "attn": "videos/3sec/attn_newtest/step-4000",
+        #         "m1": "videos/3sec/m1_newtest/step-4000",
+        #         "m2": "videos/3sec/m2_newtest/step-4000"
+        #     },
+        #     "step": 4000,
+        #     "video_length": 3,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes",
+        #     "prompt_type": "test"
+        # },
+        # {
+        #     "models": {
+        #         "mamba": "videos/3sec/mamba2_newtest/step-2500",
+        #         "m2": "videos/3sec/m2_newtest/step-2500"
+        #     },
+        #     "step": 2500,
+        #     "video_length": 3,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes",
+        #     "prompt_type": "test"
+        # }
     ]
 
 def verify_model_dict(model_dict):
