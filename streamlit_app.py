@@ -20,7 +20,18 @@ OPTIONS = [
             },
             "step": 2000,
             "video_length": 9,
-            "neg_prompt": "None"
+            "neg_prompt": "None",
+            "prompt_type": "test"
+        },
+        {
+            "models": {
+                "mamba": "videos/9sec/mamba2_train/step-2000",
+                "m1": "videos/9sec/m1_train/step-2000",
+            },
+            "step": 2000,
+            "video_length": 9,
+            "neg_prompt": "None",
+            "prompt_type": "train"
         },
         # {
         #     "models": {
@@ -39,7 +50,8 @@ OPTIONS = [
             },
             "step": 8000,
             "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters"
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters",
+            "prompt_type": "test"
         },
         {
             "models": {
@@ -50,7 +62,8 @@ OPTIONS = [
             },
             "step": 6000,
             "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters"
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes, duplicate characters",
+            "prompt_type": "test"
         },
         {
             "models": {
@@ -61,7 +74,8 @@ OPTIONS = [
             },
             "step": 4000,
             "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
+            "prompt_type": "test"
         },
         {
             "models": {
@@ -70,7 +84,8 @@ OPTIONS = [
             },
             "step": 2500,
             "video_length": 3,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
+            "prompt_type": "test"
         }
     ]
 
@@ -85,6 +100,9 @@ def verify_model_dict(model_dict):
         if not f"step-{model_dict["step"]}" in model_path:
             print(f"Model path {model_path} does not match step {model_dict["step"]}")
             return False
+        if not model_dict['prompt_type'] in model_path:
+            print(f"Model path {model_path} does not match prompt type {model_dict['prompt_type']}")
+            return False
     
     return True
         
@@ -92,6 +110,7 @@ def verify_model_dict(model_dict):
 def stringify_model_names(model_dict):
     string = f"[{model_dict["video_length"]}s-{model_dict["step"]}step] "
     string+= " vs. ".join(model_dict["models"].keys())
+    string+= f"\t({model_dict["prompt_type"]} prompt)"
     return string
 
 def show_selected_comparison(model_dict):
@@ -102,7 +121,7 @@ def show_selected_comparison(model_dict):
     for video_id in range(16):
         st.subheader(f"Sample #{video_id}")
         cols = st.columns(2)
-        for i, (title, folder) in enumerate(upload_folder_dict.items()):
+        for i, (title, folder) in enumerate(list(upload_folder_dict.items())):
             video_path = os.path.join(folder, f"{video_id:03d}-00.mp4")
             if os.path.exists(video_path):
                 with cols[i % 2]:
