@@ -17,11 +17,14 @@ OPTIONS = [
             "models": {
                 "mamba": "videos/9sec/mamba2_test/step-2000",
                 "m1": "videos/9sec/m1_test/step-2000",
+                "mamba-bug": "videos/9sec/mamba2_test/step-2000-bug",
+                "m1-bug": "videos/9sec/m1_test/step-2000-bug",
             },
             "step": 2000,
             "video_length": 9,
             "neg_prompt": "None",
-            "prompt_type": "test"
+            "prompt_type": "test",
+            "note": "bug - tokenizer without special tokens"
         },
         {
             "models": {
@@ -115,6 +118,8 @@ def stringify_model_names(model_dict):
 
 def show_selected_comparison(model_dict):
     st.markdown(f"negative_prompt={model_dict["neg_prompt"]}")
+    if "note" in model_dict:
+        st.markdown(f"note:{model_dict['note']}")
 
     upload_folder_dict = model_dict["models"]
     
