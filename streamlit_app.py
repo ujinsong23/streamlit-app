@@ -5,14 +5,14 @@ import re
 st.set_page_config(layout="centered")
 
 OPTIONS = [
-        {
-            "models": {
-                "m1_16fps": "videos/9sec/m1_16fps_newtest-8k/step-8000",
-            },
-            "step": 8000,
-            "video_length": 9,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes"
-        },
+        # {
+        #     "models": {
+        #         "m1_16fps": "videos/9sec/m1_16fps_newtest-8k/step-8000",
+        #     },
+        #     "step": 8000,
+        #     "video_length": 9,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+        # },
         {
             "models": {
                 "mamba": "videos/9sec/mamba2_test/step-2000",
@@ -54,8 +54,8 @@ OPTIONS = [
         },
         {
             "models": {
-                "attn": "videos/3sec/attn_newtest/step-4000",
                 "mamba": "videos/3sec/mamba2_newtest/step-4000",
+                "attn": "videos/3sec/attn_newtest/step-4000",
                 "m1": "videos/3sec/m1_newtest/step-4000",
                 "m2": "videos/3sec/m2_newtest/step-4000"
             },
