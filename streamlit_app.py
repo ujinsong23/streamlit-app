@@ -5,14 +5,24 @@ import re
 st.set_page_config(layout="centered")
 
 OPTIONS = [
-        # {
-        #     "models": {
-        #         "m1_16fps": "videos/9sec/m1_16fps_newtest-8k/step-8000",
-        #     },
-        #     "step": 8000,
-        #     "video_length": 9,
-        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
-        # },
+        {
+            "models": {
+                "m1_16fps": "videos/9sec/m1-gh_test/step-5000",
+            },
+            "step": 5000,
+            "video_length": 9,
+            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
+            "prompt_type": "test"
+        },
+        {
+            "models": {
+                "m1_16fps": "videos/9sec/m1-gh_val/step-5000",
+            },
+            "step": 5000,
+            "video_length": 9,
+            "neg_prompt": "None",
+            "prompt_type": "val"
+        },
         {
             "models": {
                 "mamba": "videos/9sec/mamba2_test/step-2000",
@@ -36,14 +46,16 @@ OPTIONS = [
             "neg_prompt": "None",
             "prompt_type": "train"
         },
-        # {
-        #     "models": {
-        #         "attn": "videos/9sec/attn_test/step-2400",
-        #     },
-        #     "step": 2400,
-        #     "video_length": 9,
-        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
-        # },
+        {
+            "models": {
+                "mamba": "videos/9sec/mamba2_val/step-2000",
+                "m1": "videos/9sec/m1_val/step-2000",
+            },
+            "step": 2000,
+            "video_length": 9,
+            "neg_prompt": "None",
+            "prompt_type": "val",
+        },
         {
             "models": {
                 "mamba": "videos/3sec/mamba2_newtest/step-8000",
