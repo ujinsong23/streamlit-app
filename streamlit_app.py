@@ -13,15 +13,15 @@ OPTIONS = [
             "video_length": 9,
             "neg_prompt": "motion blur, distorted faces, abnormal eyes"
         },
-        # {
-        #     "models": {
-        #         "attn": "videos/9sec/attn_test/step-2100",
-        #         "m1": "videos/9sec/m1_test/step-2100",
-        #     },
-        #     "step": 2100,
-        #     "video_length": 9,
-        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
-        # },
+        {
+            "models": {
+                "mamba": "videos/9sec/mamba2_test/step-2000",
+                "m1": "videos/9sec/m1_test/step-2000",
+            },
+            "step": 2000,
+            "video_length": 9,
+            "neg_prompt": "None"
+        },
         # {
         #     "models": {
         #         "attn": "videos/9sec/attn_test/step-2400",
