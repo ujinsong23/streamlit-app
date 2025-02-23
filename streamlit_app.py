@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import re
 
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 
 OPTIONS = [
         {
@@ -92,21 +92,13 @@ def show_selected_comparison(model_dict):
     
     for video_id in range(16):
         st.subheader(f"Sample #{video_id}")
-        if len(upload_folder_dict)<4:
-            cols = st.columns(len(upload_folder_dict))
-            for col, (title, folder) in zip(cols, upload_folder_dict.items()):
-                video_path = os.path.join(folder, f"{video_id:03d}-00.mp4")
-                if os.path.exists(video_path):
-                    col.caption(f"{title}")
-                    col.video(video_path)
-        else:
-            cols = st.columns(2)
-            for i, (title, folder) in enumerate(upload_folder_dict.items()):
-                video_path = os.path.join(folder, f"{video_id:03d}-00.mp4")
-                if os.path.exists(video_path):
-                    with cols[i % 2]:
-                        st.caption(f"{title}")
-                        st.video(video_path)
+        cols = st.columns(2)
+        for i, (title, folder) in enumerate(upload_folder_dict.items()):
+            video_path = os.path.join(folder, f"{video_id:03d}-00.mp4")
+            if os.path.exists(video_path):
+                with cols[i % 2]:
+                    st.caption(f"{title}")
+                    st.video(video_path)
                 
         with open(video_path.replace("-00.mp4", ".txt")) as f:
             caption = f.read()
