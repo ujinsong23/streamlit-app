@@ -13,20 +13,29 @@ OPTIONS = [
             "video_length": 9,
             "neg_prompt": "motion blur, distorted faces, abnormal eyes"
         },
-        {
-            "models": {
-                "attn": "videos/9sec/attn_newtest/step-2400",
-            },
-            "step": 2400,
-            "video_length": 9,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes"
-        },
+        # {
+        #     "models": {
+        #         "attn": "videos/9sec/attn_test/step-2100",
+        #         "m1": "videos/9sec/m1_test/step-2100",
+        #     },
+        #     "step": 2100,
+        #     "video_length": 9,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+        # },
+        # {
+        #     "models": {
+        #         "attn": "videos/9sec/attn_test/step-2400",
+        #     },
+        #     "step": 2400,
+        #     "video_length": 9,
+        #     "neg_prompt": "motion blur, distorted faces, abnormal eyes"
+        # },
         {
             "models": {
                 "mamba": "videos/3sec/mamba2_newtest/step-8000",
                 "attn": "videos/3sec/attn_newtest/step-8000",
                 "m1": "videos/3sec/m1_newtest/step-8000",
-                # "m2": "videos/3sec/m2_newtest/step-8000"
+                "m2": "videos/3sec/m2_newtest/step-8000"
             },
             "step": 8000,
             "video_length": 3,
