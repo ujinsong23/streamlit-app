@@ -7,22 +7,22 @@ st.set_page_config(layout="centered")
 OPTIONS = [
         {
             "models": {
-                "m1_16fps": "videos/9sec/m1-gh_test/step-5000",
-            },
-            "step": 5000,
-            "video_length": 9,
-            "neg_prompt": "motion blur, distorted faces, abnormal eyes",
-            "prompt_type": "test"
-        },
-        {
-            "models": {
-                "m1_16fps": "videos/9sec/m1-gh_val/step-5000",
+                "m1_16fps": "videos/9sec/m1-gh_testv2/step-5000",
             },
             "step": 5000,
             "video_length": 9,
             "neg_prompt": "None",
-            "prompt_type": "val"
+            "prompt_type": "test"
         },
+        # {
+        #     "models": {
+        #         "m1_16fps": "videos/9sec/m1-gh_val/step-5000",
+        #     },
+        #     "step": 5000,
+        #     "video_length": 9,
+        #     "neg_prompt": "None",
+        #     "prompt_type": "val"
+        # },
         {
             "models": {
                 "mamba": "videos/9sec/mamba2_test/step-2000",
@@ -135,7 +135,7 @@ def show_selected_comparison(model_dict):
 
     upload_folder_dict = model_dict["models"]
     
-    for video_id in range(16):
+    for video_id in range(15, -1, -1):
         st.subheader(f"Sample #{video_id}")
         cols = st.columns(2)
         for i, (title, folder) in enumerate(list(upload_folder_dict.items())):
