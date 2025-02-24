@@ -7,55 +7,49 @@ st.set_page_config(layout="centered")
 OPTIONS = [
         {
             "models": {
-                "m1_16fps": "videos/9sec/m1-gh_testv2/step-5000",
+                "m1(3.6k)": "videos/9sec/m1_test/step-3600",
+                "m1(2k)": "videos/9sec/m1_test/step-2000",
+                "m1_16fps-bugfix(1.5k)": "videos/9sec/m1-gh-fix_test/step-1500",
+                "m1_16fps(5k)": "videos/9sec/m1-gh_test/step-5000",
             },
-            "step": 5000,
+            "step": "mix",
             "video_length": 9,
             "neg_prompt": "None",
             "prompt_type": "test"
         },
         # {
         #     "models": {
-        #         "m1_16fps": "videos/9sec/m1-gh_val/step-5000",
+        #         "mamba": "videos/9sec/mamba2_test/step-2000",
+        #         "m1": "videos/9sec/m1_test/step-2000",
+        #         "mamba-bug": "videos/9sec/mamba2_test/step-2000-bug",
+        #         "m1-bug": "videos/9sec/m1_test/step-2000-bug",
         #     },
-        #     "step": 5000,
+        #     "step": 2000,
         #     "video_length": 9,
         #     "neg_prompt": "None",
-        #     "prompt_type": "val"
+        #     "prompt_type": "test",
+        #     "note": "bug - tokenizer without special tokens"
         # },
-        {
-            "models": {
-                "mamba": "videos/9sec/mamba2_test/step-2000",
-                "m1": "videos/9sec/m1_test/step-2000",
-                "mamba-bug": "videos/9sec/mamba2_test/step-2000-bug",
-                "m1-bug": "videos/9sec/m1_test/step-2000-bug",
-            },
-            "step": 2000,
-            "video_length": 9,
-            "neg_prompt": "None",
-            "prompt_type": "test",
-            "note": "bug - tokenizer without special tokens"
-        },
-        {
-            "models": {
-                "mamba": "videos/9sec/mamba2_train/step-2000",
-                "m1": "videos/9sec/m1_train/step-2000",
-            },
-            "step": 2000,
-            "video_length": 9,
-            "neg_prompt": "None",
-            "prompt_type": "train"
-        },
-        {
-            "models": {
-                "mamba": "videos/9sec/mamba2_val/step-2000",
-                "m1": "videos/9sec/m1_val/step-2000",
-            },
-            "step": 2000,
-            "video_length": 9,
-            "neg_prompt": "None",
-            "prompt_type": "val",
-        },
+        # {
+        #     "models": {
+        #         "mamba": "videos/9sec/mamba2_train/step-2000",
+        #         "m1": "videos/9sec/m1_train/step-2000",
+        #     },
+        #     "step": 2000,
+        #     "video_length": 9,
+        #     "neg_prompt": "None",
+        #     "prompt_type": "train"
+        # },
+        # {
+        #     "models": {
+        #         "mamba": "videos/9sec/mamba2_val/step-2000",
+        #         "m1": "videos/9sec/m1_val/step-2000",
+        #     },
+        #     "step": 2000,
+        #     "video_length": 9,
+        #     "neg_prompt": "None",
+        #     "prompt_type": "val",
+        # },
         {
             "models": {
                 "mamba": "videos/3sec/mamba2_newtest/step-8000",
@@ -113,8 +107,9 @@ def verify_model_dict(model_dict):
             print(f"Model path {model_path} does not match video length {model_dict["video_length"]}s")
             return False
         if not f"step-{model_dict["step"]}" in model_path:
-            print(f"Model path {model_path} does not match step {model_dict["step"]}")
-            return False
+            if model_dict["step"]!="mix":
+                print(f"Model path {model_path} does not match step {model_dict["step"]}")
+                return False
         if not model_dict['prompt_type'] in model_path:
             print(f"Model path {model_path} does not match prompt type {model_dict['prompt_type']}")
             return False
@@ -123,7 +118,11 @@ def verify_model_dict(model_dict):
         
 
 def stringify_model_names(model_dict):
-    string = f"[{model_dict["video_length"]}s-{model_dict["step"]}step] "
+    string = f"[{model_dict["video_length"]}s"
+    if model_dict['step']!="mix":
+        string += f"-{model_dict["step"]}step] "
+    else:
+        string += "] "
     string+= " vs. ".join(model_dict["models"].keys())
     string+= f"\t({model_dict["prompt_type"]} prompt)"
     return string
