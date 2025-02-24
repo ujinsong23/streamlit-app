@@ -1,10 +1,20 @@
 import streamlit as st
 import os
+from glob import glob
 import re
 
 st.set_page_config(layout="centered")
 
 OPTIONS = [
+        {
+            "models": {
+                "m1_16fps(5k)": "videos/18sec/m1-gh_test/step-900"
+            },
+            "step": 900,
+            "video_length": 18,
+            "neg_prompt": "None",
+            "prompt_type": "test"
+        },
         {
             "models": {
                 "m1(3.6k)": "videos/9sec/m1_test/step-3600",
@@ -133,8 +143,8 @@ def show_selected_comparison(model_dict):
         st.markdown(f"note:{model_dict['note']}")
 
     upload_folder_dict = model_dict["models"]
-    
-    for video_id in range(15, -1, -1):
+    n = len(glob(f"{list(upload_folder_dict.values())[0]}/*.mp4"))
+    for video_id in range(n-1, -1, -1):
         st.subheader(f"Sample #{video_id}")
         cols = st.columns(2)
         for i, (title, folder) in enumerate(list(upload_folder_dict.items())):
